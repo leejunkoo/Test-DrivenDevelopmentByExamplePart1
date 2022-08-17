@@ -14,16 +14,18 @@ class TddApplicationTests {
       this.amount = amount;
     }
 
-    void times(int multiplier) {
-      amount *=  multiplier;
+    Dollar times(int multiplier) {
+      return new Dollar(amount * multiplier);
     }
   }
 
   @Test
   public void testMultiplication() {
     Dollar five = new Dollar(5);
-    five.times(2);
-    Assertions.assertEquals(10, five.amount);
+    Dollar product = five.times(2);
+    Assertions.assertEquals(10, product.amount);
+    product = five.times(3);
+    Assertions.assertEquals(15, product.amount);
   }
 
 }

@@ -1,12 +1,12 @@
 package study.tdd.domain;
 
-public abstract class Money {
+public class Money {
   protected int amount;
-  protected String currenty;
+  protected String currency;
 
   public Money(int amount, String currency) {
     this.amount = amount;
-    this.currenty = currency;
+    this.currency = currency;
   }
 
   public static Money dollar(int amount) {
@@ -17,14 +17,24 @@ public abstract class Money {
     return new Franc(amount, "CHF");
   }
 
-  public abstract Money times(int multiplier);
+  public Money times(int multiplier) {
+    return new Money(amount * multiplier, currency);
+  }
 
+  @Override
+  public String toString() {
+    return amount + " " + currency;
+  }
+
+  @Override
   public boolean equals(Object object) {
     Money money = (Money) object;
-    return amount == money.amount && getClass().equals(money.getClass());
+    return amount == money.amount && currency().equals(money.currency());
   }
 
   public String currency() {
-    return currenty;
-  };
+    return currency;
+  }
+
+
 }

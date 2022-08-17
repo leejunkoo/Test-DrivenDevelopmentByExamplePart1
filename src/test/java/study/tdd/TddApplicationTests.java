@@ -17,6 +17,11 @@ class TddApplicationTests {
     Dollar times(int multiplier) {
       return new Dollar(amount * multiplier);
     }
+
+    public boolean equals(Object object) {
+      Dollar dollar = (Dollar) object;
+      return amount == dollar.amount;
+    }
   }
 
   @Test
@@ -26,6 +31,12 @@ class TddApplicationTests {
     Assertions.assertEquals(10, product.amount);
     product = five.times(3);
     Assertions.assertEquals(15, product.amount);
+  }
+
+  @Test
+  public void testEquality() {
+    Assertions.assertEquals(new Dollar(5), new Dollar(5));
+    Assertions.assertNotEquals(new Dollar(5), new Dollar(6));
   }
 
 }

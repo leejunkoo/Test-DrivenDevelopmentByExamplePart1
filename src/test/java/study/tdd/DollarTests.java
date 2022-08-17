@@ -3,26 +3,10 @@ package study.tdd;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import study.tdd.domain.Dollar;
 
 @SpringBootTest
 class DollarTests {
-
-  class Dollar {
-    private int amount;
-
-    Dollar(int amount) {
-      this.amount = amount;
-    }
-
-    Dollar times(int multiplier) {
-      return new Dollar(amount * multiplier);
-    }
-
-    public boolean equals(Object object) {
-      Dollar dollar = (Dollar) object;
-      return amount == dollar.amount;
-    }
-  }
 
   @Test
   public void testMultiplication() {
